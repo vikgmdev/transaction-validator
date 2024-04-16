@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: validator_db
+    environment:
+      POSTGRES_DB: validator
+      POSTGRES_USER: validator
+      POSTGRES_PASSWORD: validator
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - service_network
+
+networks:
+  service_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
